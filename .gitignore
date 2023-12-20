@@ -1,2 +1,1 @@
-echo "info.txt" >> .gitignore
 /info.txt
