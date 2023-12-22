@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+    networks:
+      - my-network
+    volumes:
+      - frontend-volume:/usr/share/nginx/html
+
+  backend:
+    build:
+      context: .
+    networks:
+      - my-network
+    volumes:
+      - backend-volume:/app
+
+  reverse-proxy:
+    build:
+      context: ./reverse-proxy
+    ports:
+      - "8080:80"
+    networks:
+      - my-network
+    depends_on:
+      - frontend
+      - backend
+    restart: always
+
+networks:
+  my-network:
+    driver: bridge
+
+volumes:
+  frontend-volume:
+  backend-volume:
