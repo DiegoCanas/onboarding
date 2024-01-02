@@ -30,6 +30,7 @@ pipeline {
                     // Paso para compilar tu aplicación
                     sh 'ls'
                     sh 'cd FStack'
+                    sh 'ls'
                     echo 'Build Init'
                     sh 'npm install'
                     sh 'npm run build'
