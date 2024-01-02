@@ -5,6 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
+                    echo 'Checkout'
                     checkout scm
                 }
             }
@@ -14,6 +15,7 @@ pipeline {
             steps {
                 script {
                     // Paso para compilar tu aplicación
+                    echo 'Build'
                     sh 'mvn clean install'
                 }
             }
@@ -23,6 +25,7 @@ pipeline {
             steps {
                 script {
                     // Paso para ejecutar pruebas
+                    echo 'Test'
                     sh 'mvn test'
                 }
             }
@@ -31,6 +34,7 @@ pipeline {
         stage('Lint') {
             steps {
                 script {
+                    echo 'Lint'
                     // Paso para realizar el linting (análisis estático de código)
                     // Puedes utilizar herramientas como ESLint para JavaScript, pylint para Python, etc.
                 }
@@ -40,6 +44,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 script {
+                    echo 'Sonar'
                     withSonarQubeEnv('NombreDeTuServidorSonarQube') {
                         // Paso para ejecutar el análisis de SonarQube
                         // Asegúrate de tener configurado SonarQube en la sección de configuración de Jenkins
