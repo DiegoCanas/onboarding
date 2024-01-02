@@ -15,8 +15,10 @@ pipeline {
             steps {
                 script {
                     // Paso para compilar tu aplicación
-                    echo 'Build'
-                    sh 'mvn clean install'
+                    echo 'Build Init'
+                    sh 'npm install'
+                    sh 'npm run build'
+                    echo 'Build End'
                 }
             }
         }
