@@ -28,6 +28,7 @@ pipeline {
             steps {
                 script {
                     // Paso para compilar tu aplicación
+                    sh 'cd FStack'
                     echo 'Build Init'
                     sh 'npm install'
                     sh 'npm run build'
