@@ -28,7 +28,6 @@ pipeline {
             steps {
                 script {
                     // Paso para compilar tu aplicación
-                    clonarRepo()
                     echo 'Build Init'
                     sh 'npm install'
                     sh 'npm run build'
