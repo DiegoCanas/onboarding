@@ -30,7 +30,7 @@ pipeline {
                     // Paso para compilar tu aplicación
                     sh 'ls'
                     sh 'pwd'
-                    dir('TestPipe/FStack') {
+                    dir('/FStack') {
                         sh 'npm install'
                         sh 'npm run build'
                     }
