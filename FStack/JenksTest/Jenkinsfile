@@ -28,8 +28,6 @@ pipeline {
             steps {
                 script {
                     // Paso para compilar tu aplicación
-                    sh 'ls'
-                    sh 'pwd'
                     dir('/var/lib/jenkins/workspace/TestPipe/FStack') {
                         sh 'npm install'
                         sh 'npm run build'
