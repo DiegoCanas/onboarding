@@ -1,6 +1,6 @@
 def clonarRepo(){
     def repoURL = "https://github.com/DiegoCanas/onboarding/tree/master/FStack"
-    def repoDir = "FStack" // Nombre del directorio destino
+    def repoDir = "App" // Nombre del directorio destino
 
     sh "git clone ${repoURL} ${repoDir}"
     echo "clonarRepo"
