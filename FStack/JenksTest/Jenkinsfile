@@ -1,0 +1,53 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                script {
+                    checkout scm
+                }
+            }
+        }
+
+        stage('Build') {
+            steps {
+                script {
+                    // Paso para compilar tu aplicación
+                    sh 'mvn clean install'
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                script {
+                    // Paso para ejecutar pruebas
+                    sh 'mvn test'
+                }
+            }
+        }
+
+        stage('Lint') {
+            steps {
+                script {
+                    // Paso para realizar el linting (análisis estático de código)
+                    // Puedes utilizar herramientas como ESLint para JavaScript, pylint para Python, etc.
+                }
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    withSonarQubeEnv('NombreDeTuServidorSonarQube') {
+                        // Paso para ejecutar el análisis de SonarQube
+                        // Asegúrate de tener configurado SonarQube en la sección de configuración de Jenkins
+                        // y de haber vinculado tu proyecto con SonarQube
+                        sh 'mvn sonar:sonar'
+                    }
+                }
+            }
+        }
+    }
+}
