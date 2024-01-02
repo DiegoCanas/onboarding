@@ -29,7 +29,6 @@ pipeline {
                 script {
                     // Paso para compilar tu aplicación
                     dir('/var/lib/jenkins/workspace/TestPipe/FStack') {
-                        sh 'npm install'
                         sh 'node server.js'
                         sh 'curl http://localhost:3000'
                     }
