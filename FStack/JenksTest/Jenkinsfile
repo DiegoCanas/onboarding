@@ -29,11 +29,11 @@ pipeline {
                 script {
                     // Paso para compilar tu aplicación
                     sh 'ls'
-                    sh 'cd FStack'
-                    sh 'ls'
-                    echo 'Build Init'
-                    sh 'npm install'
-                    sh 'npm run build'
+                    sh 'pwd'
+                    dir('TestPipe/FStack') {
+                        sh 'npm install'
+                        sh 'npm run build'
+                    }
                     echo 'Build End'
                 }
             }
