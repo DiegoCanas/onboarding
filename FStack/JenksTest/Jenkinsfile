@@ -1,3 +1,13 @@
+def clonarRepo(){
+    def repoURL = "https://github.com/DiegoCanas/onboarding/tree/master/FStack"
+    def repoDir = "FStack" // Nombre del directorio destino
+
+    sh "git clone ${repoURL} ${repoDir}"
+    echo "clonarRepo"
+                        
+}
+
+
 pipeline {
     agent any
 
@@ -5,9 +15,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
-                    dir('/var/lib/jenkins/workspace/TestPipe') {
                     checkout scm
-            }
         }
     }
 }
@@ -17,6 +25,7 @@ pipeline {
             steps {
                 script {
                     // Paso para compilar tu aplicación
+                    clonarRepo()
                     echo 'Build Init'
                     sh 'npm install'
                     sh 'npm run build'
